@@ -22,6 +22,19 @@ body{margin:0;background:#F2EDE1;color:#15130F;font-family:"EB Garamond",Georgia
 a{color:#15130F;text-decoration-thickness:1px;text-underline-offset:3px}
 a:hover{color:#3A5C7A}
 ::selection{background:#D7E2EE}
+@media (max-width:760px){
+[data-m~=stack]{grid-template-columns:minmax(0,1fr)!important;gap:28px!important}
+[data-m~=pad]{padding-left:20px!important;padding-right:20px!important}
+[data-m~=side]{position:static!important;flex-direction:row!important;flex-wrap:wrap}
+[data-m~=side]>span{flex:1 1 30%;border-top:none!important;border-right:1px solid #15130F}
+[data-m~=side]>span:first-child{flex-basis:100%;border-right:none;border-bottom:1px solid #15130F}
+[data-m~=row]{flex-direction:column!important}
+[data-m~=row]>div{flex:none!important;width:100%!important;max-height:72vh}
+article[data-open]{margin-left:0!important;padding-left:0!important;border-left:none!important}
+td{white-space:normal!important}
+[data-pop]{position:fixed!important;left:12px!important;right:12px!important;top:auto!important;bottom:12px!important;width:auto!important;transform:none!important}
+nav[style*="position:fixed"] a{padding:7px 11px!important}
+}
 [data-gallery]{scrollbar-width:thin;scrollbar-color:#15130F #EDE6D6}
 [data-gallery]::-webkit-scrollbar{height:12px}
 [data-gallery]::-webkit-scrollbar-track{background:#EDE6D6;border:1px solid #15130F}
@@ -43,7 +56,7 @@ a:hover{color:#3A5C7A}
 </nav>
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-<header style="max-width:1120px;margin:0 auto;padding:96px 32px 56px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:48px;align-items:end">
+<header data-m="stack pad" style="max-width:1120px;margin:0 auto;padding:96px 32px 56px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:48px;align-items:end">
   <div>
     <p style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin:0 0 18px;color:#4A463C">Mechanical Engineering · <span onMouseEnter="{{ utOn }}" onMouseLeave="{{ utOff }}" style="position:relative;color:#BF5700;font-weight:700;cursor:default"><span style="{{ utLogo }}"><img src="assets/ut-longhorns.svg" alt="Texas Longhorns" style="display:block;width:100%;height:auto"></span>UT Austin</span> · B.S. 2029</p>
     <h1 style="font-size:clamp(52px,8.5vw,104px);line-height:0.92;font-weight:500;margin:0 0 22px;letter-spacing:-0.02em;text-wrap:pretty">Benjamin Thomas</h1>
@@ -72,12 +85,12 @@ a:hover{color:#3A5C7A}
 
 <div style="max-width:1120px;margin:0 auto;padding:0 32px"><div style="height:1px;background:#15130F"></div></div>
 
-<section id="about" style="max-width:1120px;margin:0 auto;padding:64px 32px 76px;scroll-margin-top:90px">
+<section data-m="pad" id="about" style="max-width:1120px;margin:0 auto;padding:64px 32px 76px;scroll-margin-top:90px">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:34px">
     <span style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase">01 — About</span>
     <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
   </div>
-  <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:56px;align-items:start">
+  <div data-m="stack" style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:56px;align-items:start">
     <div style="font-size:19px;line-height:1.68;max-width:62ch;text-wrap:pretty">
       <p style="margin:0 0 18px">Mechanical engineering at UT Austin, class of 2029, from Houston. I came in through four years of FIRST Robotics on Team 118, where I did manipulator design and ran the CNC router and lathe<span style="position:relative;display:inline-block"><sup data-fn="b" onClick="{{ onFootnote }}" style="font-family:'Courier Prime',monospace;font-size:0.58em;cursor:pointer;padding:0 2px;border-bottom:1px solid #15130F;line-height:1;user-select:none">3</sup><sc-if value="{{ fnBOpen }}" hint-placeholder-val="{{ false }}"><span data-pop="b" style="box-sizing:border-box;position:absolute;top:1.9em;left:50%;transform:translateX(-50%) translateX({{ fnBShift }});width:300px;z-index:60;display:block;background:#E6EDF5;border:1px solid #15130F;border-radius:10px;padding:13px 14px 14px;text-align:left;box-shadow:3px 3px 0 rgba(21,19,15,0.18)">
         <span style="display:flex;align-items:center;gap:8px">
@@ -137,13 +150,13 @@ a:hover{color:#3A5C7A}
   </div>
 </section>
 
-<section id="projects" style="max-width:1120px;margin:0 auto;padding:64px 32px 40px;scroll-margin-top:90px">
+<section data-m="pad" id="projects" style="max-width:1120px;margin:0 auto;padding:64px 32px 40px;scroll-margin-top:90px">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:40px">
     <span style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase">02 — Projects</span>
     <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
   </div>
 
-  <article data-open="p1" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
+  <article data-m="stack" data-open="p1" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
     <div style="position:relative;overflow:hidden;border:1px solid #15130F;background-color:#EDE6D6;aspect-ratio:4/5;display:flex;align-items:flex-end;padding:12px;clip-path:polygon(0 0,100% 0,100% 100%,6% 100%,0 88%)">
       <img src="assets/upright-trim.png" alt="Machined 7075-T6 rear upright" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply">
       <span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;line-height:1.5;background:#F2EDE1;border:1px solid #15130F;padding:6px 8px">rear upright — 7075-T6,<br>as machined</span>
@@ -175,7 +188,7 @@ a:hover{color:#3A5C7A}
     </div>
   </article>
 
-  <article data-open="p2" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
+  <article data-m="stack" data-open="p2" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
     <div>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px"><p style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin:0;color:#4A463C">02 · A&amp;M Robotics Automation &amp; Design Lab · 2026</p><span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:4px 8px;border:1px solid #15130F;color:#4A463C">Completed</span></div>
       <h2 style="font-size:clamp(30px,3.6vw,42px);line-height:1.08;font-weight:500;margin:0 0 14px;letter-spacing:-0.015em">REV GSE Cart</h2>
@@ -207,7 +220,7 @@ a:hover{color:#3A5C7A}
     </div>
   </article>
 
-  <article data-open="p3" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
+  <article data-m="stack" data-open="p3" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
     <div style="position:relative;overflow:hidden;border:1px solid #15130F;background:#EDE6D6;aspect-ratio:4/3;display:flex;align-items:flex-end;padding:12px;clip-path:polygon(0 6%,7% 0,100% 0,100% 100%,0 100%)">
       <img src="assets/118-end-effector-cad.png" alt="CAD render of the 118 manipulator arm and end effector" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply">
       <span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;line-height:1.5;background:#F2EDE1;border:1px solid #15130F;padding:6px 8px">CAD — manipulator arm<br>and end effector</span>
@@ -231,7 +244,7 @@ a:hover{color:#3A5C7A}
     </div>
   </article>
 
-  <article data-open="p4" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
+  <article data-m="stack" data-open="p4" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
     <div>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px"><p style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin:0;color:#4A463C">04 · Personal build</p><span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:4px 8px;border:1px solid #15130F;background:#15130F;color:#F2EDE1">In progress</span></div>
       <h2 style="font-size:clamp(30px,3.6vw,42px);line-height:1.08;font-weight:500;margin:0 0 14px;letter-spacing:-0.015em">World Record Chair</h2>
@@ -253,7 +266,7 @@ a:hover{color:#3A5C7A}
     </div>
   </article>
 
-  <article data-open="p5" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
+  <article data-m="stack" data-open="p5" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:44px;align-items:start;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid rgba(21,19,15,0.25);cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
     <div style="border:1px solid #15130F;background-color:#EDE6D6;background-image:repeating-linear-gradient(45deg,#15130F 0 1px,transparent 1px 10px);aspect-ratio:4/3;display:flex;align-items:flex-end;padding:12px">
       <span style="font-family:'Courier Prime',monospace;font-size:10px;line-height:1.5;background:#F2EDE1;border:1px solid #15130F;padding:6px 8px">ink illustration — front upright,<br>generative lattice study</span>
     </div>
@@ -271,7 +284,7 @@ a:hover{color:#3A5C7A}
     </div>
   </article>
 
-  <article data-open="p6" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start;padding-bottom:12px;cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
+  <article data-m="stack" data-open="p6" onClick="{{ onOpenProject }}" style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start;padding-bottom:12px;cursor:pointer;padding-left:14px;margin-left:-16px;border-left:2px solid transparent" style-hover="background:#EAE2D0;border-left-color:#15130F">
     <div>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px"><p style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin:0;color:#4A463C">06 · Genesis × Bambu Lab · 2026</p><span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:4px 8px;border:1px solid #15130F;background:#15130F;color:#F2EDE1">In progress</span></div>
       <h2 style="font-size:clamp(30px,3.6vw,42px);line-height:1.08;font-weight:500;margin:0 0 14px;letter-spacing:-0.015em">Bambu Lab Make-athon</h2>
@@ -294,7 +307,7 @@ a:hover{color:#3A5C7A}
 </section>
 
 <section id="contact" style="scroll-margin-top:90px;border-top:1px solid #15130F;margin-top:48px;background:#EDE6D6">
-  <div style="max-width:1120px;margin:0 auto;padding:72px 32px 56px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px;align-items:end">
+  <div data-m="stack pad" style="max-width:1120px;margin:0 auto;padding:72px 32px 56px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px;align-items:end">
     <div>
       <p style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin:0 0 20px;color:#4A463C">03 — Contact</p>
       <p style="font-size:clamp(26px,3.4vw,40px);line-height:1.25;margin:0 0 22px;max-width:22ch;text-wrap:pretty">Hiring for Summer 2027, or want to connect?</p>
@@ -316,7 +329,7 @@ a:hover{color:#3A5C7A}
     </div>
   </div>
   <div style="border-top:1px solid rgba(21,19,15,0.3)">
-    <div style="max-width:1120px;margin:0 auto;padding:16px 32px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#4A463C">
+    <div data-m="pad" style="max-width:1120px;margin:0 auto;padding:16px 32px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#4A463C">
       <span>Benjamin Thomas · Austin, TX</span>
       <span>Drawn and set by hand · 2026</span>
     </div>
@@ -325,14 +338,14 @@ a:hover{color:#3A5C7A}
 </sc-if>
 
 <sc-if value="{{ p1Open }}" hint-placeholder-val="{{ false }}">
-<section style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
+<section data-m="pad" style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:30px">
     <span onClick="{{ onHome }}" style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid #15130F" style-hover="color:#3A5C7A">← Projects</span>
     <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
     <span style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#4A463C">01 / 06</span>
   </div>
-  <div style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
-    <nav style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
+  <div data-m="stack" style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
+    <nav data-m="side" style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
       <span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;padding:9px 11px;border-bottom:1px solid #15130F;color:#4A463C">All projects</span>
       <span style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;background:#15130F;color:#F2EDE1">01<br>Rear Upright</span>
       <span data-proj="p2" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;border-top:1px solid #15130F;cursor:pointer" style-hover="background:#E4DCC9">02<br>REV GSE Cart</span>
@@ -350,7 +363,7 @@ a:hover{color:#3A5C7A}
         <span style="font-family:'Courier Prime',monospace;font-size:11px;padding:6px 9px;border:1px solid #15130F">nTOP</span>
         <span style="font-family:'Courier Prime',monospace;font-size:11px;padding:6px 9px;border:1px solid #15130F">DFM / DFA</span>
       </div>
-      <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:40px">
+      <div data-m="stack" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:40px">
         <div style="border:1px solid #15130F;padding:24px 26px;font-size:18px;line-height:1.7;text-wrap:pretty">
           <p style="margin:0 0 16px">The rear upright transmits all tire loads into the chassis. I performed <b style="font-weight:600">finite element analysis</b> on the assembly to locate regions of stress concentration and regions carrying negligible load.</p>
           <p style="margin:0 0 16px">Applying <b style="font-weight:600">DFM and DFA</b> principles during the redesign kept the part machinable in the team's shop. The revised upright is 5% lighter and maintains a 1.75 safety factor.</p>
@@ -376,20 +389,20 @@ a:hover{color:#3A5C7A}
         <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-src="assets/rear-upright-installed.jpg" data-cap="installed — hub, halfshaft, pushrod mount" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.778 1 0%;min-width:110px;aspect-ratio:16/9;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rear-upright-installed.jpg" alt="Rear upright installed on the car, hub and axle boot in place" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">installed — hub, halfshaft, pushrod mount</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/rear-upright-hub.jpg" data-cap="CV boot into the upright" style="cursor:zoom-in;position:relative;overflow:hidden;flex:0.5625 1 0%;min-width:110px;aspect-ratio:9/16;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rear-upright-hub.jpg" alt="CV boot seated against the rear upright" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">CV boot into the upright</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/rear-upright-boot.jpg" data-cap="corner assembly — upright on the A-arms" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.778 1 0%;min-width:110px;aspect-ratio:16/9;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rear-upright-boot.jpg" alt="Rear upright on the control arms with the chassis behind" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">corner assembly — upright on the A-arms</span></div>
       </div>
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-src="assets/rear-upright-manual-mill.jpg" data-cap="squaring stock — manual mill" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.333 1 0%;min-width:110px;aspect-ratio:1600/1200;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rear-upright-manual-mill.jpg" alt="Squaring aluminum stock in a vise on a manual mill" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">squaring stock — manual mill</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/rear-upright-bushing.jpg" data-cap="turned part — as machined" style="cursor:zoom-in;position:relative;overflow:hidden;flex:0.750 1 0%;min-width:110px;aspect-ratio:1200/1600;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rear-upright-bushing.jpg" alt="Small turned aluminum part held between fingers" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">turned part — as machined</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/rear-upright-haas.jpg" data-cap="Haas Mini Mill — program running" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.333 1 0%;min-width:110px;aspect-ratio:1600/1200;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rear-upright-haas.jpg" alt="Watching a program run on a Haas Mini Mill" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">Haas Mini Mill — program running</span></div>
       </div>
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-src="assets/rear-upright-fea-sf.jpg" data-cap="Ansys — safety factor, static structural" style="cursor:zoom-in;position:relative;overflow:hidden;flex:2.097 1 0%;min-width:110px;aspect-ratio:1600/763;border:1px solid #15130F;background:#3A3A3A;display:flex;align-items:flex-end;padding:10px"><img src="assets/rear-upright-fea-sf.jpg" alt="Ansys static structural safety factor plot of the rear upright" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">Ansys — safety factor, static structural</span></div>
       </div>
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-src="assets/rear-upright-fea-lower.jpg" data-cap="safety factor — lower mount detail" style="cursor:zoom-in;position:relative;overflow:hidden;flex:2.083 1 0%;min-width:110px;aspect-ratio:1600/768;border:1px solid #15130F;background:#3A3A3A;display:flex;align-items:flex-end;padding:10px"><img src="assets/rear-upright-fea-lower.jpg" alt="Safety factor plot, lower control arm mount of the rear upright" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">safety factor — lower mount detail</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/rear-upright-fea-top.jpg" data-cap="safety factor — upper clevis detail" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.327 1 0%;min-width:110px;aspect-ratio:1144/862;border:1px solid #15130F;background:#3A3A3A;display:flex;align-items:flex-end;padding:10px"><img src="assets/rear-upright-fea-top.jpg" alt="Safety factor plot, upper clevis of the rear upright with min and max markers" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">safety factor — upper clevis detail</span></div>
       </div>
@@ -404,14 +417,14 @@ a:hover{color:#3A5C7A}
 </sc-if>
 
 <sc-if value="{{ p2Open }}" hint-placeholder-val="{{ false }}">
-<section style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
+<section data-m="pad" style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:30px">
     <span onClick="{{ onHome }}" style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid #15130F" style-hover="color:#3A5C7A">← Projects</span>
     <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
     <span style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#4A463C">02 / 06</span>
   </div>
-  <div style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
-    <nav style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
+  <div data-m="stack" style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
+    <nav data-m="side" style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
       <span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;padding:9px 11px;border-bottom:1px solid #15130F;color:#4A463C">All projects</span>
       <span data-proj="p1" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;cursor:pointer" style-hover="background:#E4DCC9">01<br>Rear Upright</span>
       <span style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;border-top:1px solid #15130F;background:#15130F;color:#F2EDE1">02<br>REV GSE Cart</span>
@@ -452,17 +465,17 @@ a:hover{color:#3A5C7A}
         <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-src="assets/rev-cart-finished.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.333 1 0%;min-width:110px;aspect-ratio:4/3;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rev-cart-finished.jpg" alt="Finished REV GSE cart with labeled drawers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">finished cart — labeled drawers, maple panel</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/rev-cart-rails.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:0.75 1 0%;min-width:110px;aspect-ratio:3/4;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rev-cart-rails.jpg" alt="Powder-coated sheet metal rails with lightening pattern" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">rails — lightening pattern</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/rev-cart-riveting.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.333 1 0%;min-width:110px;aspect-ratio:4/3;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rev-cart-riveting.jpg" alt="Riveting the cart frame" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">riveting the frame — uprights and gussets</span></div>
       </div>
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-src="assets/rev-cart-frame-slides.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:0.75 1 0%;min-width:110px;aspect-ratio:3/4;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rev-cart-frame-slides.jpg" alt="Frame with drawer slides installed" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">drawer slides going in</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/rev-cart-foam-drawer.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.333 1 0%;min-width:110px;aspect-ratio:4/3;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rev-cart-foam-drawer.jpg" alt="Tool drawer with custom foam inserts" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">foam inserts — cut from scanned tool profiles</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/rev-cart-wood-panel.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.333 1 0%;min-width:110px;aspect-ratio:4/3;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/rev-cart-wood-panel.jpg" alt="Maple side panel with pocketed triangle relief" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">maple side panel — pocketed relief</span></div>
       </div>
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-src="assets/rev-cart-tracefinity.png" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1 1 0%;min-width:110px;aspect-ratio:1.98;border:1px solid #15130F;background:#15130F;display:flex;align-items:flex-end;padding:10px"><img src="assets/rev-cart-tracefinity.png" alt="Tracefinity interface showing a traced tool outline and a 3D preview of the foam insert" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">Tracefinity — traced tool profiles into an insert layout</span></div>
       </div>
       </div>
@@ -476,14 +489,14 @@ a:hover{color:#3A5C7A}
 </sc-if>
 
 <sc-if value="{{ p3Open }}" hint-placeholder-val="{{ false }}">
-<section style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
+<section data-m="pad" style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:30px">
     <span onClick="{{ onHome }}" style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid #15130F" style-hover="color:#3A5C7A">← Projects</span>
     <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
     <span style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#4A463C">03 / 06</span>
   </div>
-  <div style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
-    <nav style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
+  <div data-m="stack" style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
+    <nav data-m="side" style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
       <span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;padding:9px 11px;border-bottom:1px solid #15130F;color:#4A463C">All projects</span>
       <span data-proj="p1" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;cursor:pointer" style-hover="background:#E4DCC9">01<br>Rear Upright</span>
       <span data-proj="p2" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;border-top:1px solid #15130F;cursor:pointer" style-hover="background:#E4DCC9">02<br>REV GSE Cart</span>
@@ -523,18 +536,18 @@ a:hover{color:#3A5C7A}
         <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-src="assets/118-end-effector-cad.png" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.719 1 0%;min-width:110px;aspect-ratio:1.719;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/118-end-effector-cad.png" alt="CAD render of the 118 manipulator end effector and arm" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">CAD — end effector and arm assembly</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/118-firefly-field.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1 1 0%;min-width:110px;aspect-ratio:1;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/118-firefly-field.jpg" alt="Team 118 robot Firefly on the competition field" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">Firefly on the field</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/118-arm-pulleys.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:1.333 1 0%;min-width:110px;aspect-ratio:1.333;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/118-arm-pulleys.jpg" alt="Close-up of the arm pulleys and belt drive" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">arm pulleys and belt drive</span></div>
       </div>
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-src="assets/118-champs-score.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:0.8 1 0%;min-width:110px;aspect-ratio:0.8;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/118-champs-score.jpg" alt="Robot scoring a game piece at the district championship" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">scoring at the district championship</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/118-practice-field.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:0.667 1 0%;min-width:110px;aspect-ratio:0.667;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/118-practice-field.jpg" alt="Manipulator arm extended over the field structure" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">arm at full extension</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/118-router.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:0.75 1 0%;min-width:110px;aspect-ratio:0.75;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/118-router.jpg" alt="CNC router spindle inside its enclosure" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">CNC router — spindle and enclosure</span></div>
         <div onClick="{{ onZoom }}" data-src="assets/118-router-plates.jpg" style="cursor:zoom-in;position:relative;overflow:hidden;flex:0.75 1 0%;min-width:110px;aspect-ratio:0.75;border:1px solid #15130F;background:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><img src="assets/118-router-plates.jpg" alt="Polycarbonate plates cut on the CNC router" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">polycarbonate plates off the router</span></div>
       </div>
-      <div style="display:flex;gap:10px;align-items:stretch">
+      <div data-m="row" style="display:flex;gap:10px;align-items:stretch">
         <div onClick="{{ onZoom }}" data-vid="118-prototype-clip-1.mp4" data-cap="prototyping video 01" style="cursor:pointer;position:relative;overflow:hidden;flex:0.5625 1 0%;min-width:110px;aspect-ratio:0.5625;border:1px solid #15130F;background-color:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><video src="118-prototype-clip-1.mp4" ref="{{ inlineVidRef }}" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">prototyping video 01</span></div>
         <div onClick="{{ onZoom }}" data-vid="118-prototype-clip-2.mp4" data-cap="prototyping video 02" style="cursor:pointer;position:relative;overflow:hidden;flex:1.778 1 0%;min-width:110px;aspect-ratio:1.778;border:1px solid #15130F;background-color:#EDE6D6;display:flex;align-items:flex-end;padding:10px"><video src="118-prototype-clip-2.mp4" ref="{{ inlineVidRef }}" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video><span style="position:relative;font-family:'Courier Prime',monospace;font-size:10px;background:#F2EDE1;border:1px solid #15130F;padding:5px 7px">prototyping video 02</span></div>
       </div>
@@ -549,14 +562,14 @@ a:hover{color:#3A5C7A}
 </sc-if>
 
 <sc-if value="{{ p4Open }}" hint-placeholder-val="{{ false }}">
-<section style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
+<section data-m="pad" style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:30px">
     <span onClick="{{ onHome }}" style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid #15130F" style-hover="color:#3A5C7A">← Projects</span>
     <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
     <span style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#4A463C">04 / 06</span>
   </div>
-  <div style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
-    <nav style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
+  <div data-m="stack" style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
+    <nav data-m="side" style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
       <span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;padding:9px 11px;border-bottom:1px solid #15130F;color:#4A463C">All projects</span>
       <span data-proj="p1" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;cursor:pointer" style-hover="background:#E4DCC9">01<br>Rear Upright</span>
       <span data-proj="p2" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;border-top:1px solid #15130F;cursor:pointer" style-hover="background:#E4DCC9">02<br>REV GSE Cart</span>
@@ -573,7 +586,7 @@ a:hover{color:#3A5C7A}
         <span style="font-family:'Courier Prime',monospace;font-size:11px;padding:6px 9px;border:1px solid #15130F">Fusion 360</span>
         <span style="font-family:'Courier Prime',monospace;font-size:11px;padding:6px 9px;border:1px solid #15130F">CNC router</span>
       </div>
-      <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:40px">
+      <div data-m="stack" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:40px">
         <div style="border:1px solid #15130F;padding:24px 26px;font-size:18px;line-height:1.7;text-wrap:pretty">
           <p style="margin:0 0 16px">The Guinness World Records mark for the <b>thinnest folding chair</b> is 1.68 cm, held by Gaetano Callocchia. Teddy Garza and I have filed an attempt to surpass it with a prototype measuring under 1.27 cm when stowed, defined as the minimum distance between two parallel planes enclosing the folded chair. Whereas the current record holder's design draws on Mondrian, ours is driven by material limits: the thinnest structure that still functions as a chair.</p>
           <p style="margin:0 0 16px">Every component <b>nests rather than stacks</b>: the legs and seat retract into one another so that the folded state contains no gaps or overlapping volume. The base material, aluminum or wood, is selected on strength-to-thickness ratio, and the <b>hinges and fasteners are custom-machined flush</b> with the panel faces so that the laminate thickness alone determines the measurement. The chair must also stand unaided when unfolded; achieving thinness is the simpler half of the problem.</p>
@@ -614,14 +627,14 @@ a:hover{color:#3A5C7A}
 </sc-if>
 
 <sc-if value="{{ p5Open }}" hint-placeholder-val="{{ false }}">
-<section style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
+<section data-m="pad" style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:30px">
     <span onClick="{{ onHome }}" style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid #15130F" style-hover="color:#3A5C7A">← Projects</span>
     <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
     <span style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#4A463C">05 / 06</span>
   </div>
-  <div style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
-    <nav style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
+  <div data-m="stack" style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
+    <nav data-m="side" style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
       <span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;padding:9px 11px;border-bottom:1px solid #15130F;color:#4A463C">All projects</span>
       <span data-proj="p1" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;cursor:pointer" style-hover="background:#E4DCC9">01<br>Rear Upright</span>
       <span data-proj="p2" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;border-top:1px solid #15130F;cursor:pointer" style-hover="background:#E4DCC9">02<br>REV GSE Cart</span>
@@ -662,14 +675,14 @@ a:hover{color:#3A5C7A}
 </sc-if>
 
 <sc-if value="{{ p6Open }}" hint-placeholder-val="{{ false }}">
-<section style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
+<section data-m="pad" style="max-width:1120px;margin:0 auto;padding:92px 32px 72px">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:30px">
     <span onClick="{{ onHome }}" style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid #15130F" style-hover="color:#3A5C7A">← Projects</span>
     <span style="flex:1;height:1px;background:#15130F;opacity:0.35"></span>
     <span style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#4A463C">06 / 06</span>
   </div>
-  <div style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
-    <nav style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
+  <div data-m="stack" style="display:grid;grid-template-columns:172px minmax(0,1fr);gap:40px;align-items:start">
+    <nav data-m="side" style="position:sticky;top:92px;display:flex;flex-direction:column;border:1px solid #15130F">
       <span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;padding:9px 11px;border-bottom:1px solid #15130F;color:#4A463C">All projects</span>
       <span data-proj="p1" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;cursor:pointer" style-hover="background:#E4DCC9">01<br>Rear Upright</span>
       <span data-proj="p2" onClick="{{ onOpenProject }}" style="font-family:'Courier Prime',monospace;font-size:11px;line-height:1.45;padding:11px;border-top:1px solid #15130F;cursor:pointer" style-hover="background:#E4DCC9">02<br>REV GSE Cart</span>
@@ -682,7 +695,7 @@ a:hover{color:#3A5C7A}
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px"><p style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin:0;color:#4A463C">Genesis × Bambu Lab · 2026 · Lead organizer</p><span style="font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:4px 8px;border:1px solid #15130F;background:#15130F;color:#F2EDE1">In progress</span></div>
       <h1 style="font-size:clamp(36px,5vw,60px);line-height:1.02;font-weight:500;margin:0 0 16px;letter-spacing:-0.02em">Bambu Lab Make-athon</h1>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px"><span style="font-family:'Courier Prime',monospace;font-size:11px;padding:6px 9px;border:1px solid #15130F">Program design</span><span style="font-family:'Courier Prime',monospace;font-size:11px;padding:6px 9px;border:1px solid #15130F">Sponsorship</span><span style="font-family:'Courier Prime',monospace;font-size:11px;padding:6px 9px;border:1px solid #15130F">Budgeting</span><span style="font-family:'Courier Prime',monospace;font-size:11px;padding:6px 9px;border:1px solid #15130F">Judging rubrics</span></div>
-      <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:40px">
+      <div data-m="stack" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:40px">
         <div style="border:1px solid #15130F;padding:24px 26px;font-size:18px;line-height:1.7;text-wrap:pretty">
           <p style="margin:0 0 16px">Genesis is UT Austin's student-run venture fund. I am organizing its next event as a startup makeathon in which competing teams design and 3D-print a functional product prototype rather than presenting a slide deck. Bambu Lab hardware and print resources are integrated into the format from the outset.</p>
           <p style="margin:0 0 16px">The competition spans three events over several weeks rather than a single weekend. Every team first pitches a concept and business case, and only the ten strongest advance to the build stage. This structure maintains judging quality and directs prize and materials funding toward the teams most likely to produce a strong result.</p>
