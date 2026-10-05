@@ -4180,7 +4180,7 @@ Modified: UI removed, sized to container, continuous auto-scroll. -->
   var lastU = MEM.cursx, visible = true, raf = 0;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   function tick(){
-    MEM.cursx += 0.6;
+    MEM.cursx += 1.5;
     if (MEM.cursx - lastU > 256) { lastU = MEM.cursx; update(); } else viewupdate();
     raf = visible ? requestAnimationFrame(tick) : 0;
   }
